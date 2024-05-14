@@ -50,7 +50,7 @@ namespace TESAmerica.Infrastructure.Repositories
                               g.Key.NumPedido,
                               g.Key.Fecha,
                               precio = g.Sum( x => x.Precio),
-                              subtotal = g.Sum( x => x.Subtotal)
+                              subtotal = g.Sum( x => x.Cantidad * x.Precio)
                           };
 
             //(select p.CLIENTE, sum(subp.precio) precio, sum(subp.subtotal) subtotal " +
