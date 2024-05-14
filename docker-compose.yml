@@ -1,0 +1,21 @@
+version: "3.9"
+
+networks:
+  app-network-public:
+    driver: bridge
+
+services:
+  db:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
+    container_name: db-sqlserver
+    networks:
+      - app-network-public
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "Admin@123"
+    ports:
+      - "1433:1433"
+    volumes:
+      - ./data:/var/opt/mssql/data
